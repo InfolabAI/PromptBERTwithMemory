@@ -1,0 +1,107 @@
+# sample.yaml
+program: detection-with-tfidf.py
+method: bayes
+name: fake_detection
+project: ours
+entity: felight87
+metric:
+  name: roc
+  goal: maximize
+
+parameters:
+  nb_alpha:
+    min: 0.00001
+    max: 1.0
+  sgd_iter:
+    distribution: int_uniform
+    min: 1
+    max: 50
+  sgd_penalty:
+    distribution: categorical
+    values: [l1, l2, elasticnet, None]
+  sgd_alpha:
+    min: 0.00001
+    max: 1.0
+  sgd_tol:
+    min: 0.00001
+    max: 1.0
+  sgd_learning_rate:
+    distribution: categorical
+    values: [constant, optimal, invscaling, adaptive]
+  sgd_eta0:
+    min: 0.00001
+    max: 1.0
+  sgd_power_t:
+    min: 0.00001
+    max: 1.0
+  sgd_early_stopping:
+    distribution: categorical
+    values: [True, False]
+  sgd_warm_start:
+    distribution: categorical
+    values: [True, False]
+  lgbm_boosting_type:
+    distribution: categorical
+    values: [gbdt, dart]
+  lgbm_num_leaves:
+    distribution: int_uniform
+    min: 10
+    max: 100
+  lgbm_max_depth:
+    distribution: int_uniform
+    min: -1
+    max: 100
+  lgbm_learning_rate:
+    min: 0.00001
+    max: 1.0
+  lgbm_n_estimators:
+    distribution: int_uniform
+    min: 10
+    max: 1000
+  lgbm_subsample_for_bin:
+    distribution: int_uniform
+    min: 10000
+    max: 1000000
+  lgbm_colsample_bytree:
+    min: 0.1
+    max: 1.0
+  lgbm_colsample_bynode:
+    min: 0.1
+    max: 1.0
+  lgbm_reg_alpha:
+    min: 0.0
+    max: 0.5
+  lgbm_reg_lambda:
+    min: 0.0
+    max: 0.5
+  catboost_iter:
+    distribution: int_uniform
+    min: 1
+    max: 50
+  catboost_learning_rate:
+    min: 0.00001
+    max: 1.0
+  catboost_subsample:
+    min: 0.1
+    max: 1.0
+  catboost_l2_leaf_reg:
+    min: 0.01
+    max: 10.0
+  catboost_random_strength:
+    min: 0.01
+    max: 10.0
+  catboost_bagging_temperature:
+    min: 0.01
+    max: 10.0
+  voting_weight_nb:
+    min: 0.0
+    max: 1.0
+  voting_weight_sgd:
+    min: 0.0
+    max: 1.0
+  voting_weight_lgbm:
+    min: 0.0
+    max: 1.0
+  voting_weight_catboost:
+    min: 0.0
+    max: 1.0
