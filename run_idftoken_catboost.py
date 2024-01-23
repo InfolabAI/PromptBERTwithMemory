@@ -38,10 +38,14 @@ import os
 from utils import Dataset as Dataset_U
 from utils import get_df
 
+os.environ["TOKENIZERS_PARALLELISM"] = "false"
+
 
 def cat_train_test(train, test):
     LOWERCASE = False
     VOCAB_SIZE = 14000000
+    if 'generated' in test.columns:
+        test = test.rename(columns={'generated': 'label'})
 
     # Creating Byte-Pair Encoding tokenizer
     raw_tokenizer = Tokenizer(models.BPE(unk_token="[UNK]"))
@@ -173,6 +177,9 @@ def cat_train_test(train, test):
     print("final_preds = model.predict_proba(tf_test)[:,1]")
     final_preds = model.predict_proba(tf_test)[:, 1]
     test['generated'] = final_preds
+    roc = roc_auc_score(test['label'], test['generated'])
+    print(roc)
+
     return test
 
     # calc roc_auc with sklearn

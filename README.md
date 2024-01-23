@@ -1,4 +1,6 @@
 # PromptBERT-based Algoritm Using Memory Bank for Detecting AI Generated Text
+## About This Code
+- This is my implementation of PromptBERT using memory bank for detection AI generated text
 ## Getting Started
 ### Download the datasets
 - Training dataset - DAIGT V2 Train Dataset [link](https://www.kaggle.com/datasets/thedrcat/daigt-v2-train-dataset)
@@ -42,7 +44,3 @@
 | label ratio | 0.909 | 0.905 | 0.892 | 0.840 |
 | num         |  175  |  878  | 1757  | 8789  |
 | score max   | 0.000 | 1.255 | 1.464 | 1.907 |
-
-# Useful Functions
-- Remove intersection between train and test by specific column (train and test have their own columns)
-    - `utils.py` 내 `get_df()`
